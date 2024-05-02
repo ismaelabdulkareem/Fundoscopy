@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:omvoting/account.dart';
-import 'package:omvoting/home.dart';
+import 'package:omvoting/view/home.dart';
 import 'package:omvoting/news.dart';
-import 'package:omvoting/results.dart';
+import 'package:omvoting/view/results.dart';
 
 class MyWidgetIndex extends StatefulWidget {
   const MyWidgetIndex({super.key});

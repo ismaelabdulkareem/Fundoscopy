@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class MyWidgetParties extends StatelessWidget {
   final String partiName;
   final String partiVotes;
   final String partiPercent;
   final Color colorChoose;
+  final String? img;
 
   const MyWidgetParties({
     super.key,
@@ -12,13 +14,14 @@ class MyWidgetParties extends StatelessWidget {
     required this.partiVotes,
     required this.partiPercent,
     required this.colorChoose,
+    required this.img,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-      margin: const EdgeInsets.only(left: 22, right: 22),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+      margin: const EdgeInsets.only(left: 22, right: 22, bottom: 12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -41,6 +44,30 @@ class MyWidgetParties extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Container(
+            height: 35,
+            width: 35,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: const GradientBoxBorder(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 228, 33, 33),
+                    Color.fromRGBO(0, 0, 0, 0.004),
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+                width: 3,
+              ),
+              image: img != null
+                  ? DecorationImage(
+                      image: ExactAssetImage(img!),
+                      fit: BoxFit.fill,
+                    )
+                  : null, // If img is null, don't show an image
+            ),
+          ),
           Text(
             partiName,
             style: const TextStyle(

@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:omvoting/component/textfiled.dart';
+import 'package:omvoting/component/candidates.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:omvoting/component/textfiled.dart';
 import 'package:omvoting/viewModel/partilistApp2_viewModel.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -43,7 +44,8 @@ class _MyWidgetRegState extends State<MyWidgetInsertParties> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoadingOverlay(
+        body: Obx(
+      () => LoadingOverlay(
         isLoading: partyApp2VM.isLoading.value,
         child: Container(
           width: double.infinity,
@@ -65,7 +67,7 @@ class _MyWidgetRegState extends State<MyWidgetInsertParties> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildProfileImageContainer() {

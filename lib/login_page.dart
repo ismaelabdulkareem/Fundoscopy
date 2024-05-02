@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:omvoting/component/candidates.dart';
 import 'package:omvoting/component/textfiled.dart';
 import 'package:omvoting/index.dart';
 import 'package:omvoting/index_app2.dart';

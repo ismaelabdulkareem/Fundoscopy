@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:omvoting/component/textfiled.dart';
 import 'package:text_area/text_area.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:omvoting/component/textfiled.dart';
+import 'package:omvoting/component/candidates.dart';
 
 class MyWidgetInsertCandidates extends StatefulWidget {
   const MyWidgetInsertCandidates({super.key});

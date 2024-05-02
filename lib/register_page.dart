@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:omvoting/component/candidates.dart';
 import 'package:omvoting/component/textfiled.dart';
 
 class MyWidgetReg extends StatefulWidget {
