@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-import 'package:omvoting/partieslist_app2.dart';
+import 'package:omvoting/view/partieslist_app2.dart';
 import 'package:omvoting/candidatelist_app2.dart';
 //import 'package:votingapp/component/myDrawer.dart';
 
@@ -29,8 +29,8 @@ class _MyWidgetHomeState extends State<MyWidgetIndex_app2> {
         toolbarHeight: 130,
         leading: IconButton(
           color: Colors.white,
-          padding: EdgeInsets.only(left: 30, bottom: 30),
-          icon: Icon(Icons.menu_outlined),
+          padding: const EdgeInsets.only(left: 30, bottom: 30),
+          icon: const Icon(Icons.menu_outlined),
           onPressed: () {
             if (scaffoldKey.currentState!.isDrawerOpen) {
               scaffoldKey.currentState!.closeDrawer();
@@ -99,7 +99,7 @@ class _MyWidgetHomeState extends State<MyWidgetIndex_app2> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 35, 132, 243),
               ),
               accountName: Text(

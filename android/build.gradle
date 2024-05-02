@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        // Update the classpath line here
+        classpath 'com.android.tools.build:gradle:4.2.0'
+    }
+}
 allprojects {
     repositories {
         google()
