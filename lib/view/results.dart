@@ -165,16 +165,19 @@ class _MyWidgetResState extends State<MyWidgetRes> {
                 stream:
                     FirebaseFirestore.instance.collection("party").snapshots(),
                 builder: (context, snapshot) {
-                  List<Row> clientWidgets = [];
+                  List<Column> clientWidgets = [];
                   if (snapshot.hasData && snapshot.data != null) {
                     final clients = snapshot.data!.docs.reversed.toList();
                     for (var cl in clients) {
-                      final ClientWid = Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      final ClientWid = Column(
                         children: [
-                          Text(cl['pName']),
-                          Text(cl['pId']),
-                          Text(cl['pVotes'].toString()),
+                          MyWidgetParties(
+                            partiName: cl['pName'],
+                            partiVotes: cl['pVotes'].toString(),
+                            partiPercent: '61%',
+                            colorChoose: Colors.yellow,
+                            img: cl['pImage'],
+                          ),
                         ],
                       );
                       clientWidgets.add(ClientWid);

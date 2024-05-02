@@ -20,7 +20,7 @@ class MyWidgetParties extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       margin: const EdgeInsets.only(left: 22, right: 22, bottom: 12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -42,9 +42,10 @@ class MyWidgetParties extends StatelessWidget {
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
+            margin: const EdgeInsets.only(right: 10),
             height: 35,
             width: 35,
             decoration: BoxDecoration(
@@ -62,26 +63,34 @@ class MyWidgetParties extends StatelessWidget {
               ),
               image: img != null
                   ? DecorationImage(
-                      image: ExactAssetImage(img!),
-                      fit: BoxFit.fill,
+                      image: NetworkImage(img!),
+                      fit: BoxFit.fitHeight,
                     )
                   : null, // If img is null, don't show an image
             ),
           ),
-          Text(
-            partiName,
-            style: const TextStyle(
-              fontFamily: 'georgia',
-              fontWeight: FontWeight.bold,
+          SizedBox(
+            width: 250,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  partiName,
+                  style: const TextStyle(
+                    fontFamily: 'georgia',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  partiVotes,
+                  style: const TextStyle(fontFamily: 'georgia'),
+                ),
+                Text(
+                  partiPercent,
+                  style: const TextStyle(fontFamily: 'georgia'),
+                ),
+              ],
             ),
-          ),
-          Text(
-            partiVotes,
-            style: const TextStyle(fontFamily: 'georgia'),
-          ),
-          Text(
-            partiPercent,
-            style: const TextStyle(fontFamily: 'georgia'),
           ),
         ],
       ),
