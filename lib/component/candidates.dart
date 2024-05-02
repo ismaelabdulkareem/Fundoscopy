@@ -22,8 +22,8 @@ class newCandidate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // my style
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
-      margin: const EdgeInsets.only(left: 35, right: 35, top: 20),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+      margin: const EdgeInsets.only(left: 30, right: 30, top: 15),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [
@@ -59,7 +59,7 @@ class newCandidate extends StatelessWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: NetworkImage(candidatePic),
-                fit: BoxFit.fill, // Adjust this based on your preference
+                fit: BoxFit.cover, // Adjust this based on your preference
               ),
             ),
           ),

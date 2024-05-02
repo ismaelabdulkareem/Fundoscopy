@@ -44,30 +44,31 @@ class _MyWidgetRegState extends State<MyWidgetInsertParties> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Obx(
-      () => LoadingOverlay(
-        isLoading: partyApp2VM.isLoading.value,
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  children: <Widget>[
-                    _buildProfileImageContainer(),
-                    const SizedBox(height: 15),
-                    _buildForm(),
-                    _buildInsertButton(),
-                  ],
+      body: Obx(
+        () => LoadingOverlay(
+          isLoading: partyApp2VM.isLoading.value,
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 20),
+                    children: <Widget>[
+                      _buildProfileImageContainer(),
+                      const SizedBox(height: 15),
+                      _buildForm(),
+                      _buildInsertButton(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 
   Widget _buildProfileImageContainer() {

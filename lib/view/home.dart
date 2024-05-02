@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:omvoting/component/candidates.dart';
+import 'package:omvoting/model/candList_app2_model.dart';
+import 'package:omvoting/viewModel/candListApp2_viewModel.dart';
 
-class MyWidgetHome extends StatelessWidget {
-  const MyWidgetHome({super.key});
+class MyWidgetHome extends StatefulWidget {
+  const MyWidgetHome({Key? key}) : super(key: key);
+
+  @override
+  _MyWidgetHomeState createState() => _MyWidgetHomeState();
+}
+
+class _MyWidgetHomeState extends State<MyWidgetHome> {
+  final CandView_Model _viewModel = CandView_Model();
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel.fetchAllCand();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +27,9 @@ class MyWidgetHome extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: ExactAssetImage('assets/images/bg.png'), fit: BoxFit.fill),
+            image: AssetImage('assets/images/bg.png'),
+            fit: BoxFit.fill,
+          ),
         ),
         child: Column(
           children: [
@@ -43,88 +61,37 @@ class MyWidgetHome extends StatelessWidget {
               height: 15,
             ),
             Expanded(
-              child: ListView(
-                children: const <Widget>[
-                  newCandidate(
-                    candidateName: 'Mr Hamreen',
-                    candidateParty: 'New Gerneration',
-                    candidatenumber: '1',
-                    candidateVote: '185',
-                    candidatePic:
-                        'https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Marewan',
-                    candidateParty: 'Union Nation',
-                    candidatenumber: '44',
-                    candidateVote: '752',
-                    candidatePic:
-                        'https://media.istockphoto.com/id/1667318722/vector/young-man-shows-developed-muscles-of-the-torso-and-shoulder-girdle-flexing-his-muscle-with.jpg?s=1024x1024&w=is&k=20&c=_mWIhaVE7lw1fZsuPqYHnFFCWE2iOp_q7kI4fX6wo2E=',
-                  ),
-                  newCandidate(
-                      candidateName: 'Mr Ismael',
-                      candidateParty: 'Independent',
-                      candidatenumber: '47',
-                      candidateVote: '45',
-                      candidatePic:
-                          'https://cdn2.iconfinder.com/data/icons/covid-19-1/64/11-Sore_throat-256.png'),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                  newCandidate(
-                    candidateName: 'Mr Salman',
-                    candidateParty: 'Independent',
-                    candidatenumber: '4',
-                    candidateVote: '141',
-                    candidatePic:
-                        'https://cdn1.iconfinder.com/data/icons/user-avatar-20/64/04-man-256.png',
-                  ),
-                ],
+              child: StreamBuilder<List<CandListApp2_Model>>(
+                stream: _viewModel.allCandList.stream,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  }
+
+                  final List<CandListApp2_Model>? candidates = snapshot.data;
+
+                  if (candidates == null || candidates.isEmpty) {
+                    return const Center(child: Text('No candidates available'));
+                  }
+
+                  return ListView.builder(
+                    itemCount: candidates.length,
+                    itemBuilder: (context, index) {
+                      final candidate = candidates[index];
+                      return newCandidate(
+                        candidateName: candidate.candName,
+                        candidateParty: candidate.candPart,
+                        candidatenumber: candidate.candNo,
+                        candidateVote: candidate.candVotes.toString(),
+                        candidatePic: candidate.candImg,
+                      );
+                    },
+                  );
+                },
               ),
             ),
           ],

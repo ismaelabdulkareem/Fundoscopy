@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 import 'package:omvoting/view/partieslist_app2.dart';
-import 'package:omvoting/candidatelist_app2.dart';
+import 'package:omvoting/view/candidatelist_app2.dart';
 //import 'package:votingapp/component/myDrawer.dart';
 
 class MyWidgetIndex_app2 extends StatefulWidget {
