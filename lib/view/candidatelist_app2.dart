@@ -8,8 +8,6 @@ import 'package:omvoting/component/textfiled.dart';
 import 'package:omvoting/viewModel/candListApp2_viewModel.dart';
 import 'package:text_area/text_area.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:omvoting/component/candidates.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 class MyWidgetInsertCandidates extends StatefulWidget {

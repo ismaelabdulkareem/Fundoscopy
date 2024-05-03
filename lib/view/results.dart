@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:omvoting/viewModel/candListApp2_viewModel.dart';
 import 'package:omvoting/viewModel/partilistApp2_viewModel.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
