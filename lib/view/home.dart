@@ -5,7 +5,7 @@ import 'package:omvoting/model/candList_app2_model.dart';
 import 'package:omvoting/viewModel/candListApp2_viewModel.dart';
 
 class MyWidgetHome extends StatefulWidget {
-  const MyWidgetHome({Key? key}) : super(key: key);
+  const MyWidgetHome({super.key});
 
   @override
   _MyWidgetHomeState createState() => _MyWidgetHomeState();
@@ -64,7 +64,8 @@ class _MyWidgetHomeState extends State<MyWidgetHome> {
               child: StreamBuilder<List<CandListApp2_Model>>(
                 stream: _viewModel.allCandList.stream,
                 builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
+                  if (_viewModel.isLoading.value &&
+                      snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   }
 

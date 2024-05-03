@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-// ignore: must_be_immutable, camel_case_types
 class newCandidate extends StatelessWidget {
   final String candidateName;
   final String candidateParty;

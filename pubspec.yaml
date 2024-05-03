@@ -57,6 +57,7 @@ dev_dependencies:
   get: ^4.6.6
   loading_overlay: ^0.3.0
   firebase_storage: ^11.7.4
+  provider: ^6.1.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
